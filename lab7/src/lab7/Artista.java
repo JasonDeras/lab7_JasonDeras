@@ -8,8 +8,8 @@ public class Artista extends Persona {
     private ArrayList seguidores = new ArrayList();
     private ArrayList albumes = new ArrayList();
 
-    public Artista() {
-        super();
+    public Artista(String usuario, String nombre, String apellido, String contraseña, Date fecha) {
+        super(usuario, nombre, apellido, contraseña, fecha);
     }
 
     public ArrayList<String> getCanciones_p() {
@@ -42,6 +42,10 @@ public class Artista extends Persona {
 
     public void setCancion(String cancion) {
         canciones_p.add(cancion);
+    }
+
+    public void setAlbum(String album) {
+        albumes.add(album);
     }
 
     @Override

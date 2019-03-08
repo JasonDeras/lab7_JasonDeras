@@ -9,9 +9,11 @@ public class Usuario extends Persona {
     private ArrayList playlist = new ArrayList();
     private ArrayList<Artista> artistas = new ArrayList();
 
-    public Usuario() {
-        super();
+    public Usuario(String usuario, String nombre, String apellido, String contraseña, Date fecha) {
+        super(usuario, nombre, apellido, contraseña, fecha);
     }
+
+    
 
     public ArrayList<Cancion> getCanciones() {
         return canciones;
