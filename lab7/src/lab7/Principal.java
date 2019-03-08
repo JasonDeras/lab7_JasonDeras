@@ -240,11 +240,24 @@ public class Principal extends javax.swing.JFrame {
 
     private void bt_LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_LoginActionPerformed
         // TODO add your handling code here:
-        if (p.getContraseña().equals(pf_Contraseña.getText()) && p.getUsuario().equals(tf_Usuario)) {
-
-        } else {
-            JOptionPane.showMessageDialog(this, "La contraseña esta mala o el usuario no existe");
-        }
+        for (int i = 0; i < persona.size(); i++) {
+            if (tf_Usuario.getText().equals(((Usuario) persona.get(i)).getUsuario()) && pf_Contraseña.getText().equals(((Usuario) persona.get(i)).getContraseña())) {
+                jd_Usuario.setModal(true);
+                jd_Usuario.pack();
+                jd_Usuario.setLocationRelativeTo(this);
+                jd_Usuario.setVisible(true);
+            } else if (tf_Usuario.getText().equals(((Artista) persona.get(i)).getUsuario()) && pf_Contraseña.getText().equals(((Artista) persona.get(i)).getContraseña())) {
+                jd_Artista.setModal(true);
+                jd_Artista.pack();
+                jd_Artista.setLocationRelativeTo(this);
+                jd_Artista.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(this, "Usuario incorrecto o no existe");
+                break;
+            }
+        }//Fin del for que recorre la lista de persona
+        tf_Usuario.setText("");
+        pf_Contraseña.setText("");
     }//GEN-LAST:event_bt_LoginActionPerformed
 
     private void bt_CrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_CrearActionPerformed
@@ -252,12 +265,14 @@ public class Principal extends javax.swing.JFrame {
         if (rb_Usuario.isSelected() == true) {
             u = new Usuario(tf_Usuario1.getText(), tf_Nombre.getText(), tf_Apellido.getText(), pf_Contraseña1.getText(), jd_Nacimiento.getDate());
             adminPersona ap = new adminPersona("./Usuario");
+            persona.add(u);
             ap.cargarArchivo();
             ap.setPersona(a);
             ap.escribirArchivo();
         } else if (rb_Artista.isSelected() == true) {
             a = new Artista(tf_Usuario1.getText(), tf_Nombre.getText(), tf_Apellido.getText(), pf_Contraseña1.getText(), jd_Nacimiento.getDate());
             adminPersona ap = new adminPersona("./Artista");
+            persona.add(a);
             ap.cargarArchivo();
             ap.setPersona(a);
             ap.escribirArchivo();
@@ -335,7 +350,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTextField tf_Usuario;
     private javax.swing.JTextField tf_Usuario1;
     // End of variables declaration//GEN-END:variables
-    private Persona p;
+    private ArrayList<Persona> persona = new ArrayList();
     private Usuario u;
     private Artista a;
 }
