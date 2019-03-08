@@ -13,8 +13,6 @@ public class Usuario extends Persona {
         super(usuario, nombre, apellido, contraseña, fecha);
     }
 
-    
-
     public ArrayList<Cancion> getCanciones() {
         return canciones;
     }
@@ -37,6 +35,18 @@ public class Usuario extends Persona {
 
     public void setArtistas(ArrayList<Artista> artistas) {
         this.artistas = artistas;
+    }
+
+    public void setPlaylist(Playlist p) {
+        playlist.add(p);
+    }
+
+    public void setArtista(Artista a) {
+        artistas.add(a);
+    }
+
+    public void setCancion(Cancion c) {
+        canciones.add(c);
     }
 
     @Override

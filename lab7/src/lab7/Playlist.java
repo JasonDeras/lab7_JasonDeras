@@ -57,6 +57,10 @@ public class Playlist implements Runnable {
         this.duracion = duracion;
     }
 
+    public void setCancion(Cancion c) {
+        canciones.add(c);
+    }
+
     @Override
     public String toString() {
         return nombre + ", genero=" + genero + ", duracion=" + duracion + '}';

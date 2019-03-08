@@ -53,7 +53,7 @@ public class Album {
 
     @Override
     public String toString() {
-        return  nombre + ", año=" + año + ", nombre_A=" + nombre_A + ", canciones=" + canciones + '}';
+        return nombre + ", año=" + año + ", nombre_A=" + nombre_A + ", canciones=" + canciones + '}';
     }
 
 }
