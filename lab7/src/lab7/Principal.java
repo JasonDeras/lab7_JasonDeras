@@ -21,6 +21,7 @@ public class Principal extends javax.swing.JFrame {
      */
     public Principal() {
         initComponents();
+        ab = new adminBarra(pb_Cancion);
     }
 
     /**
@@ -245,6 +246,9 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel9.setText("Ingrese el nomrbe de la Playlist");
 
+        pb_Cancion.setToolTipText("");
+        pb_Cancion.setString("0:00\n\n");
+
         bt_Play.setText("Play Cancion");
         bt_Play.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -272,13 +276,9 @@ public class Principal extends javax.swing.JFrame {
                             .addGroup(jd_UsuarioLayout.createSequentialGroup()
                                 .addComponent(jl_Lista_C, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(164, 164, 164)))
-                        .addGroup(jd_UsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_UsuarioLayout.createSequentialGroup()
-                                .addGap(9, 9, 9)
-                                .addComponent(pb_Cancion, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jd_UsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jScrollPane5)
-                                .addComponent(jl_Lista_A, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(jd_UsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane5)
+                            .addComponent(jl_Lista_A, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(jd_UsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jScrollPane6)
@@ -308,6 +308,8 @@ public class Principal extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jd_UsuarioLayout.createSequentialGroup()
                         .addComponent(bt_Play)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(pb_Cancion, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         jd_UsuarioLayout.setVerticalGroup(
@@ -316,8 +318,7 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jd_UsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jl_Titulo_C)
-                    .addComponent(tf_Cancion1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pb_Cancion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tf_Cancion1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tf_Agregar_LC)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -352,7 +353,9 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(bt_Agregar_PL)
                 .addGap(52, 52, 52)
-                .addComponent(bt_Play)
+                .addGroup(jd_UsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(bt_Play)
+                    .addComponent(pb_Cancion, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35))
         );
 
@@ -729,7 +732,7 @@ public class Principal extends javax.swing.JFrame {
     private void bt_PlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_PlayActionPerformed
         // TODO add your handling code here:
         if (JL_Canciones.getSelectedIndex() >= 0) {
-
+            ab.start();
         } else {
             JOptionPane.showMessageDialog(this, "Seleccione una cancion antes de darle play");
         }
@@ -860,4 +863,5 @@ public class Principal extends javax.swing.JFrame {
     private Playlist pl;
     private Album al;
     private int duracion = 0;
+    adminBarra ab;
 }
